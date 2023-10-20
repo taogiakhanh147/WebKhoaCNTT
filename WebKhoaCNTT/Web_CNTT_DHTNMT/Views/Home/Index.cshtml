@@ -1,0 +1,187 @@
+﻿@*Trang Index/Home*@
+@{
+    ViewBag.Title = "Trường Đại Học Tài Nguyên và Môi Trường";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <title>@ViewBag.Title</title>
+
+    <!-- Font Awesome -->
+    <link href="~/Content/mycontent/css/fonts/css/all.min.css" rel="stylesheet" />
+    <!-- bootstrap css -->
+    <link href="~/Content/mycontent/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <!-- Style -->
+    <link href="~/Content/mycontent/css/style.css" rel="stylesheet" />
+    <!-- Tạo icon trên tab -->
+    <link rel="icon" href="~/images/logo/logo.png" type="image/x-icon" />
+</head>
+<body>
+    @*Content dữ liệu tin tức*@
+    <div class="row" style="padding-top:10px;">
+        @*GIỚI THIỆU*@
+        <div class="col-md-4">
+            <div style="display:flex;">
+                <div style="background: #66AD4E; border-radius: 60px; width: 30px; height: 30px; line-height: 28px; font-size: 12px; color: #fff; ">
+                    <i class="fas fa-info" style="padding-left:13px; padding-top:10px;"></i>
+                </div>
+                <div style="padding-top:3px; font-size: 14px; padding-left:15px;">
+                    GIỚI THIỆU
+                </div>
+            </div>
+            <div style="padding-top:20px;">
+                <img src="~/images/logo/1.png" style="width:120px; height:120px;" />
+            </div>
+            <div style="width: 360px; height: 115px; padding-top: 5px; font-size: 14px; font-family: Arial; font-weight: 400px;">
+                <p style="line-height: 23px;">
+                    Khoa Công nghệ thông tin. Đội ngũ giảng viên có tuổi
+                    đời trung bình rất trẻ và năng động, với phần lớn các giảng viên có trình độ sau đại học.
+                    Hiện nay, Khoa có 20 giảng viên cơ hữu và cán bộ chuyên trách, trong đó có 1 PGS.TS, 05 Tiến sĩ v ...
+                </p>
+            </div>
+            <div style="padding-top: 15px;">
+                <a href="@Url.Action("GioiThieu","TrangCon1")" style="color:#6bb130; font-size:15px;">
+                    Xem chi tiết
+                    <i class="far fa-angle-double-right" style="color: #6bb130; font-size: 13px; "></i>
+                </a>
+            </div>
+        </div>
+
+        @*THÔNG BÁO*@
+        <div class="col-md-4">
+            <div style="display:flex;">
+                <div style="background: #66AD4E; border-radius: 60px; width: 30px; height: 30px; line-height: 28px; font-size: 12px; color: #fff; ">
+                    <i class="fa fa-bullhorn fa-fw" style="padding-left:8px; padding-top:10px;"></i>
+                </div>
+                <div style="padding-top:3px; font-size: 14px; padding-left:15px;">
+                    THÔNG BÁO
+                </div>
+            </div>
+            <div class="latest-news mt-4" style="color:#6bb130;">
+                @*Lấy dữ liệu động của tin tức thông báo*@
+                <section class="p-2" style="overflow: auto; height: 650px;">
+                    @foreach (var item in (IEnumerable<Web_CNTT_DHTNMT.Models.@new>)ViewData["TinThongBao"])
+                    {
+                        <div class="multiple-ttsk">
+                            <a class="text-decoration-none text-dark" href="@Url.Action("Index", "ChiTietThongBao", new { id = @item.slug })">
+                                <span style="font-size: 14px;">
+                                    @string.Format("{0:dd/MM/yyyy}", Convert.ToDateTime(Html.DisplayFor(modelItem => item.created_at).ToString()))
+                                </span>
+                                <br />
+                                <span style="color: #6bb130; font-weight: 600; font-size: 14px;">
+                                    @item.title
+                                </span>
+                                <hr />
+                            </a>
+                        </div>
+                    }
+                </section>
+            </div>
+        </div>
+
+        @*TIN TỨC SỰ KIỆN*@
+        <div class="col-md-4">
+            <div style="display:flex;">
+                <div style="background: #66AD4E; border-radius: 60px; width: 30px; height: 30px; line-height: 28px; font-size: 12px; color: #fff; ">
+                    <i class="fas fa-info" style="padding-left:13px; padding-top:10px;"></i>
+                </div>
+                <div style="padding-top:3px; font-size: 14px; padding-left:15px;">
+                    TIN TỨC SỰ KIỆN
+                </div>
+            </div>
+            <div class="latest-news mt-4">
+                <div style="display:flex;">
+                    <div id="tieudetinnoibat" style="color: #fff; background: #6bb130; width: 95px; height: 40px;
+                                cursor: context-menu;">
+                        <a>
+                            <span>
+                                <p style="font-size:14px;padding-top:7px;padding-left:12px;">
+                                    Tin nổi bật
+                                </p>
+                            </span>
+                        </a>
+                    </div>
+                    <div id="tieudetintuctruong" style="width: 117px; height: 40px; padding-top: 7px; padding-left: 12px;
+                            font-size: 14px; border-right: 1px solid #6bb130; cursor: pointer;">
+                        <a>
+                            Tin tức trường
+                        </a>
+                    </div>
+                </div>
+                @*Lấy dữ liệu động của tin tức nổi bật*@
+                <section class="p-2" style="overflow: auto; height: 590px; border-top: 1px solid #6bb130; background: #f0f0f0;"
+                         id="dulieutintucnoibat">
+                    @foreach (var item in (IEnumerable<Web_CNTT_DHTNMT.Models.@new>)ViewData["TinNoiBat"])
+                    {
+                        <div class="multiple-ttsk">
+                            <a class="text-decoration-none text-dark" href="@Url.Action("Index", "ChiTietThongBao", new { id = @item.slug })">
+                                @string.Format("{0:dd/MM/yyyy}", Convert.ToDateTime(Html.DisplayFor(modelItem => item.created_at).ToString()))
+                                <br />
+                                <span style="color: #6bb130; font-weight:600; font-size:14px;">
+                                    @item.title
+                                </span>
+                                <hr />
+                            </a>
+                        </div>
+                    }
+                </section>
+                @*Lấy dữ liệu động của tin tức trường*@
+                <section class="p-2" style="overflow: auto; height: 590px; border-top: 1px solid #6bb130; background: #f0f0f0; display:none;"
+                         id="dulieutintuctruong">
+                    @foreach (var item in (IEnumerable<Web_CNTT_DHTNMT.Models.@new>)ViewData["TinTucTruong"])
+                    {
+                        <div class="multiple-ttsk">
+                            <a class="text-decoration-none text-dark" href="@Url.Action("Index", "ChiTietThongBao", new { id = @item.slug })">
+                                @string.Format("{0:dd/MM/yyyy}", Convert.ToDateTime(Html.DisplayFor(modelItem => item.created_at).ToString()))
+                                <br />
+                                <span style="color: #6bb130; font-weight:600; font-size:14px;">
+                                    @item.title
+                                </span>
+                                <hr />
+                            </a>
+                        </div>
+                    }
+                </section>
+            </div>
+        </div>
+    </div>
+
+
+    @Scripts.Render("~/bundles/jquery")
+    <!-- bootstrap js -->
+    <script src="~/Content/mycontent/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/Content/mycontent/js/jquery-3.6.0.min.js"></script>
+    <script src="~/Content/mycontent/js/bootstrap.min.js"></script>
+
+    <script>
+        $('#tieudetintuctruong').click(function () {
+            $('#tieudetinnoibat').css({ "background": "#fff" })
+            $('#tieudetinnoibat').css({ "color": "#000" })
+            $('#tieudetinnoibat').css({ "cursor": "pointer" });
+            $('#tieudetintuctruong').css({ "color": "#fff" });
+            $('#tieudetintuctruong').css({ "background": "#6bb130" });
+            $('#tieudetintuctruong').css({ "cursor": "context-menu" });
+            $('#dulieutintucnoibat').css({ "display": "none" })
+            $('#dulieutintuctruong').css({ "display": "" })
+        });
+    </script>
+
+    <script>
+        $('#tieudetinnoibat').click(function () {
+            $('#tieudetintuctruong').css({ "background": "#fff" })
+            $('#tieudetintuctruong').css({ "color": "#000" })
+            $('#tieudetinnoibat').css({ "color": "#fff" });
+            $('#tieudetinnoibat').css({ "background": "#6bb130" });
+            $('#tieudetinnoibat').css({ "cursor": "context-menu" });
+            $('#tieudetintuctruong').css({ "cursor": "pointer" });
+            $('#dulieutintuctruong').css({ "display": "none" })
+            $('#dulieutintucnoibat').css({ "display": "" })
+        });
+    </script>
+</body>
+</html>

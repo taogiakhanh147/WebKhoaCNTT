@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="TinTuc" targetNamespace="http://tempuri.org/TinTuc.xsd" xmlns:mstns="http://tempuri.org/TinTuc.xsd" xmlns="http://tempuri.org/TinTuc.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="TinTuc" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="TinTuc" msprop:Generator_UserDSName="TinTuc">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="dsData" msprop:Generator_TableClassName="dsDataDataTable" msprop:Generator_TableVarName="tabledsData" msprop:Generator_RowChangedName="dsDataRowChanged" msprop:Generator_TablePropName="dsData" msprop:Generator_RowDeletingName="dsDataRowDeleting" msprop:Generator_RowChangingName="dsDataRowChanging" msprop:Generator_RowEvHandlerName="dsDataRowChangeEventHandler" msprop:Generator_RowDeletedName="dsDataRowDeleted" msprop:Generator_RowClassName="dsDataRow" msprop:Generator_UserTableName="dsData" msprop:Generator_RowEvArgName="dsDataRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="title" msprop:Generator_ColumnVarNameInTable="columntitle" msprop:Generator_ColumnPropNameInRow="title" msprop:Generator_ColumnPropNameInTable="titleColumn" msprop:Generator_UserColumnName="title" type="xs:string" minOccurs="0" />
+              <xs:element name="created_at" msprop:Generator_ColumnVarNameInTable="columncreated_at" msprop:Generator_ColumnPropNameInRow="created_at" msprop:Generator_ColumnPropNameInTable="created_atColumn" msprop:Generator_UserColumnName="created_at" type="xs:string" minOccurs="0" />
+              <xs:element name="status" msprop:Generator_ColumnVarNameInTable="columnstatus" msprop:Generator_ColumnPropNameInRow="status" msprop:Generator_ColumnPropNameInTable="statusColumn" msprop:Generator_UserColumnName="status" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

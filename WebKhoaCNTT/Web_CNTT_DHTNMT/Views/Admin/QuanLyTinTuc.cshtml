@@ -1,0 +1,134 @@
+﻿@{
+    ViewBag.Title = "Trường Đại Học Tài Nguyên và Môi Trường";
+    Layout = "~/Views/Shared/_Layout_Admin.cshtml";
+}
+
+@model IEnumerable<Web_CNTT_DHTNMT.Models.@new>
+@{
+    IEnumerable<Web_CNTT_DHTNMT.Models.news_group> nhomtintucs = ViewData["NhomTinTuc"] as IEnumerable<Web_CNTT_DHTNMT.Models.news_group>;
+    IEnumerable<Web_CNTT_DHTNMT.Models.user> users = ViewData["User"] as IEnumerable<Web_CNTT_DHTNMT.Models.user>;
+}
+
+<div style="margin-top:30px;">
+    <div style="display:flex; margin-top:20px; margin-bottom:10px;">
+        <div>
+            @*Search bằng tên tiêu đề*@
+            @using (@Html.BeginForm())
+            {
+
+                @Html.TextBox("searchTerm", null, new { id = "txtSearch" })
+                <input type="submit" value="Tìm kiếm" style="color:#fff; background:#6bb130; border: none; height:30px; font-size:15px;" />
+            }
+
+            <script type="text/javascript">
+            $(function () {
+                $("#txtSearch").autocomplete({
+                    source: '@Url.Action("GetTinTucs")',
+                    minLength: 2
+                });
+            });
+            </script>
+        </div>
+
+        <div style="padding-left:800px; display:flex;">
+            <div>
+                <a href="/Admin/Create" class="btn btn-primary">Thêm mới</a>
+            </div>
+            <div class="pl-4">
+                <a href="~/Reports/ReportViewer.aspx" class="btn btn-primary"><i class="fas fa-print"></i></a>
+            </div>
+        </div>
+
+
+    </div>
+</div>
+<table class="table table-bordered table-hover">
+    <tr style="background-color: #6bb130; color:#FFF;">
+        <th class="text-center" style="font-size:18px; font-weight:400; width: 500px;">
+            Tiêu đề
+        </th>
+        <th class="text-center" style="font-size: 18px; font-weight: 400;">
+            Ngày tạo
+        </th>
+        <th class="text-center" style="font-size: 18px; font-weight: 400;">
+            Trạng thái
+        </th>
+@*        <th class="text-center" style="font-size: 18px; font-weight: 400;">
+            Loại tin tức
+        </th>
+        <th class="text-center" style="font-size: 18px; font-weight: 400;">
+            Người tạo
+        </th>*@
+        <th class="text-center" style="font-size: 18px; font-weight: 400;">
+            Hành động
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+<tr>
+    @*Tiêu đề*@
+    <td>
+        @Html.DisplayFor(modelItem => item.title)
+    </td>
+
+    @*Ngày tạo*@
+    <td class="text-center">
+        @string.Format("{0:dd/MM/yyyy}", Convert.ToDateTime(Html.DisplayFor(modelItem => item.created_at).ToString()))
+    </td>
+
+    @*Trạng thái*@
+    <td class="text-center">
+        @if (item.status == false)
+        {
+            <span class="label label-danger">Ẩn</span>
+        }
+        else
+        {
+            <span class="label label-success">Hiện</span>
+        }
+    </td>
+
+    @*Loại tin tức*@
+   @* <td class="text-center">
+        @foreach (var nt in nhomtintucs)
+        {
+            if (nt.id == item.newsgroup_id)
+            {
+                @nt.name
+            }
+        }
+    </td>*@
+
+    @*Người tạo*@
+ @*   <td class="text-center">
+        @foreach (var u in users)
+        {
+            if (u.id == item.user_id)
+            {
+                @u.name
+            }
+        }
+    </td>*@
+
+    @*Hành động*@
+    <td class="text-center">
+        <button class="bg-primary" style="border: 1px solid #FFF; border-radius:5px;">
+            @Html.ActionLink("Sửa", "Edit", new { id = item.id }, new { @style = "color:#FFF; text-decoration:none;" })
+        </button>
+
+        <button class="bg-info" style="border: 1px solid #FFF; border-radius:5px;">
+            @Html.ActionLink("Chi tiết", "Details", new { id = item.id }, new { @style = "color:#FFF; text-decoration:none; " })
+        </button>
+        <button class="bg-danger" style="border: 1px solid #FFF; border-radius: 5px;">
+            @Html.ActionLink("Xóa", "Delete", new { id = item.id }, new
+            {
+                onclick = "return confirm('XÁC NHẬN XÓA!')",
+            @style = "color:#FFF; text-decoration:none; "
+            })
+        </button>
+    </td>
+</tr>
+    }
+
+</table>

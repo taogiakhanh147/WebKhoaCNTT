@@ -1,0 +1,96 @@
+﻿@*Trang Detail/Admin*@
+    @{
+        ViewBag.Title = "Trường Đại Học Tài Nguyên và Môi Trường";
+        Layout = "~/Views/Shared/_Layout_Admin.cshtml";
+    }
+
+    @model Web_CNTT_DHTNMT.Models.@new
+    @{
+        IEnumerable<Web_CNTT_DHTNMT.Models.news_group> nhomtintucs = ViewData["NhomTinTuc"] as IEnumerable<Web_CNTT_DHTNMT.Models.news_group>;
+    }
+
+    <div style="margin-top:100px;">
+        <h3 class="text-center"><strong>Chi tiết tin tức</strong></h3>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                Tiêu đề
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.title)
+            </dd>
+
+            <dt>
+                Slug
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.slug)
+            </dd>
+
+            <dt>
+                Ngày tạo
+            </dt>
+
+            <dd>
+                @string.Format("{0:dd/MM/yyyy}", Convert.ToDateTime(Html.DisplayFor(model => model.created_at).ToString()))
+            </dd>
+
+            <dt>
+                Ngày sửa
+            </dt>
+
+            <dd>
+                @string.Format("{0:dd/MM/yyyy}", Html.DisplayFor(model => model.updated_at))
+            </dd>
+
+            <dt>
+                Trạng thái
+            </dt>
+
+            <dd>
+                @*@Html.DisplayFor(model => model.status)*@
+                @if (Model.status == false)
+                {
+                    <span class="label label-danger">Ẩn</span>
+                }
+                else
+                {
+                    <span class="label label-success">Hiện</span>
+                }
+            </dd>
+
+            <dt>
+                Loại tin tức
+            </dt>
+
+            <dd>
+                @foreach (var nt in nhomtintucs)
+                {
+                    if (nt.id == Model.newsgroup_id)
+                    {
+                        @nt.name
+                    }
+                }
+            </dd>
+
+            <dt>
+                Nội dung
+            </dt>
+
+            <dd>
+
+                <div style="background-color: whitesmoke; padding: 1.5rem; border-radius: 8px;">
+                    @Html.Raw(Model.content)
+                </div>
+
+            </dd>
+
+        </dl>
+    </div>
+    <div style="margin-left:20px;">
+    <a href="@Url.Action("QuanLyTinTuc", "Admin")" class="btn btn-secondary">
+        <i class="fas fa-arrow-left"></i>
+    </a>
+</div>

@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="Web_CNTT_DHTNMT">
+  <DataContextMoniker Name="/Web_CNTT_DHTNMTDataContext" />
+  <nestedChildShapes>
+    <classShape Id="a9aac649-edf6-4261-afcb-2e497e16143d" absoluteBounds="6.25, 4.125, 2, 1.7708968098958327">
+      <DataClassMoniker Name="/Web_CNTT_DHTNMTDataContext/comment" />
+      <nestedChildShapes>
+        <elementListCompartment Id="913f80ba-9f49-4abd-8152-e891fdba7210" absoluteBounds="6.265, 4.585, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="902495a5-bad8-405d-9a7c-6a0aab594088" absoluteBounds="3.5, 4, 2, 2.1554996744791675">
+      <DataClassMoniker Name="/Web_CNTT_DHTNMTDataContext/user" />
+      <nestedChildShapes>
+        <elementListCompartment Id="e6ab75e7-cd89-4d4d-8983-85be13129ba5" absoluteBounds="3.515, 4.46, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="8509ead0-fc50-4669-a3f2-2f3fd119fc6f" absoluteBounds="6.25, 0.75, 2, 2.5401025390625">
+      <DataClassMoniker Name="/Web_CNTT_DHTNMTDataContext/new" />
+      <nestedChildShapes>
+        <elementListCompartment Id="84e5edc5-7975-4c2c-8ae5-80fca2d5e463" absoluteBounds="6.265, 1.21, 1.9700000000000002, 1.9801025390625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="814b9915-3993-4704-9865-fe7e048ad8d8" absoluteBounds="3.5, 2, 2, 1.1939925130208338">
+      <DataClassMoniker Name="/Web_CNTT_DHTNMTDataContext/news_group" />
+      <nestedChildShapes>
+        <elementListCompartment Id="bde23fc0-a382-4a06-ad9a-b663b6e05545" absoluteBounds="3.515, 2.46, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="9a758772-1c79-43e6-a3f6-03717cecdcb7" absoluteBounds="0.75, 4.375, 2, 1.1939925130208335">
+      <DataClassMoniker Name="/Web_CNTT_DHTNMTDataContext/user_group" />
+      <nestedChildShapes>
+        <elementListCompartment Id="3424e19d-f561-44a9-ad45-accf17ae0958" absoluteBounds="0.765, 4.835, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(5.5 : 5.01044840494792); (6.25 : 5.01044840494792)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/Web_CNTT_DHTNMTDataContext/user/user_comment" />
+      <nodes>
+        <classShapeMoniker Id="902495a5-bad8-405d-9a7c-6a0aab594088" />
+        <classShapeMoniker Id="a9aac649-edf6-4261-afcb-2e497e16143d" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(7.25 : 3.2901025390625); (7.25 : 4.125)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/Web_CNTT_DHTNMTDataContext/new/new_comment" />
+      <nodes>
+        <classShapeMoniker Id="8509ead0-fc50-4669-a3f2-2f3fd119fc6f" />
+        <classShapeMoniker Id="a9aac649-edf6-4261-afcb-2e497e16143d" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(5.5 : 4); (5.875 : 3.625); (5.875 : 2.02005126953125); (6.25 : 2.02005126953125)]" fixedFrom="NotFixed" fixedTo="Algorithm">
+      <AssociationMoniker Name="/Web_CNTT_DHTNMTDataContext/user/user_new" />
+      <nodes>
+        <classShapeMoniker Id="902495a5-bad8-405d-9a7c-6a0aab594088" />
+        <classShapeMoniker Id="8509ead0-fc50-4669-a3f2-2f3fd119fc6f" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(5.5 : 2.66952189127604); (5.79166666666667 : 2.66952189127604 : JumpStart); (5.95833333333333 : 2.66952189127604 : JumpEnd); (6.25 : 2.66952189127604)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/Web_CNTT_DHTNMTDataContext/news_group/news_group_new" />
+      <nodes>
+        <classShapeMoniker Id="814b9915-3993-4704-9865-fe7e048ad8d8" />
+        <classShapeMoniker Id="8509ead0-fc50-4669-a3f2-2f3fd119fc6f" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.75 : 4.97199625651042); (3.5 : 4.97199625651042)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/Web_CNTT_DHTNMTDataContext/user_group/user_group_user" />
+      <nodes>
+        <classShapeMoniker Id="9a758772-1c79-43e6-a3f6-03717cecdcb7" />
+        <classShapeMoniker Id="902495a5-bad8-405d-9a7c-6a0aab594088" />
+      </nodes>
+    </associationConnector>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>
